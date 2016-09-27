@@ -3,9 +3,17 @@
 
 {% block content %}
     <h1>Class List</h1>
-    {% for single_class in class_lists %}
-        <p>{{ single_class.level }}</p>
-        <p> with {{ single_class.students.count }} of students </p>
+    <table>
+        <thead>
+            <td>Name</td>
+            <td>Level</td>
+        </thead>
+        <tbody>
+    {% for single_class in class_list %}
+    <tr>
+        <td>{{ single_class.name }}</td>
+        <td>{{ single_class.level }}</td>
+    </tr>
     {% empty %}
         <p>No class created yet</p>
     {% endfor %}

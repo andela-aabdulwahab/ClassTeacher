@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from django.contrib.auth.models import User
+import time
 
 # Create your tests here.
 
@@ -46,5 +47,5 @@ class TestClassList(StaticLiveServerTestCase):
         name.send_keys('Gold')
         submit = self.browser.find_element_by_name("submit")
         submit.click()
-        body = self.browser.find_element_by_name("body")
+        body = self.browser.find_element_by_tag_name("body")
         self.assertIn("Gold", body.text)
