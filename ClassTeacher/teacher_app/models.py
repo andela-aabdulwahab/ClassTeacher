@@ -7,6 +7,14 @@ from django.urls import reverse
 # Create your models here.
 
 
+class Student(models.Model):
+    first_name = models.CharField(blank=False)
+    last_name = models.CharField(blank=False)
+    middle_name = models.CharField(blank=True)
+    age = models.IntegerField(blank=True)
+    class_name = models.ForeignKey(Student, related_name="students")
+
+
 class TeacherClass(models.Model):
     LEVEL = (
         ('Primary one', 'Primary one'),

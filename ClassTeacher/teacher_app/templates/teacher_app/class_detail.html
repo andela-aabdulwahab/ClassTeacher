@@ -8,5 +8,11 @@
     <h1>Detail View</h1>
     <p>Name: {{ single_class.name }}</p>
     <p>Teacher: {{ single_class.teacher }}</p>
-    <p>Level: {{ single_class.level }}</p<
+    <p>Level: {{ single_class.level }}</p>
+    <p>Students</p>
+    <ul>
+        {% for student in single_class.students %}
+            <li>{{ student.first_name}} {{ student.last_name }} {{ student.age }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
