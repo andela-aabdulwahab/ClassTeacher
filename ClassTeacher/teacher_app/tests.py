@@ -1,3 +1,24 @@
 from django.test import TestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from selenium import webdriver
+from django.contrib.auth.models import User
 
 # Create your tests here.
+
+
+class TestClassList(StaticLiveServerTestCase):
+
+    def setUp(self):
+        self.browser = webdriver.PhantomJS()
+        self.browser.implicitly_wait(3)
+        user = User.objects.create_user(username="malik",
+                                        password="malikwahab")
+        user.save()
+
+    def tearDown(self):
+        self.browser.quit()
+
+    def test_class_list_url_exit(self):
+        self.browser.get(self.live_server_url+'/class')
+        body = self.browser.find_element_by_tag_name("body")
+        self.assertIn('Class List', body.text)
