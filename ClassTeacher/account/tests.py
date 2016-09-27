@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
+from django.contrib.auth.models import User
 
 # Create your tests here.
 
@@ -10,6 +11,8 @@ class TestUserAuthentication(StaticLiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.PhantomJS()
         self.browser.implicitly_wait(3)
+        user = User.objects.create_user(username="malik", password="malikwahab")
+        user.save()
 
     def tearDown(self):
         self.browser.quit()
