@@ -1,4 +1,4 @@
 *.pyc
 venv/
 ClassTeacher/db.sqlite3
-
+ghostdriver.log
