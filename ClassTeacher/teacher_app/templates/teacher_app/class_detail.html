@@ -1,0 +1,12 @@
+{% extends "teacher_app/base.html" %}
+
+{% block title %}
+    {{ single_class.name }} - details
+{% endblock %}
+
+{% block content %}
+    <h1>Detail View</h1>
+    <p>Name: {{ single_class.name }}</p>
+    <p>Teacher: {{ single_class.teacher }}</p>
+    <p>Level: {{ single_class.level }}</p<
+{% endblock %}

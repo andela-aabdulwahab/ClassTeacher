@@ -11,7 +11,7 @@
         <tbody>
     {% for single_class in class_list %}
     <tr>
-        <td>{{ single_class.name }}</td>
+        <td><a href="{{ single_class.get_aboslute_url }}" >{{ single_class.name }}</a></td>
         <td>{{ single_class.level }}</td>
     </tr>
     {% empty %}
