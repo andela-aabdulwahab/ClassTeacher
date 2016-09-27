@@ -62,3 +62,4 @@ class TestClassList(StaticLiveServerTestCase):
 
         body = self.browser.find_element_by_tag_name("body")
         self.assertIn("Detail View", body.text)
+        self.assertIn("Students", body.text)
