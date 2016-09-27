@@ -14,6 +14,13 @@ class TestClassList(StaticLiveServerTestCase):
         user = User.objects.create_user(username="malik",
                                         password="malikwahab")
         user.save()
+        self.browser.get(self.live_server_url+'/account/login')
+        username = self.browser.find_element_by_name("username")
+        username.send_keys("malik")
+        password = self.browser.find_element_by_name("password")
+        password.send_keys("malikwahab")
+        submit = self.browser.find_element_by_name("submit")
+        submit.click()
 
     def tearDown(self):
         self.browser.quit()

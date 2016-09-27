@@ -1,0 +1,12 @@
+{% extends "teacher_app/base.html" %}
+{% block title %} class list{% endblock %}
+
+{% block content %}
+    <h1>Class List</h1>
+    {% for single_class in class_lists %}
+        <p>{{ single_class.level }}</p>
+        <p> with {{ single_class.students.count }} of students </p>
+    {% empty %}
+        <p>No class created yet</p>
+    {% endfor %}
+{% endblock %}
