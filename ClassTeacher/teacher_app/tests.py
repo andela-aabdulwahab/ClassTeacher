@@ -29,3 +29,13 @@ class TestClassList(StaticLiveServerTestCase):
         self.browser.get(self.live_server_url+'/class/')
         body = self.browser.find_element_by_tag_name("body")
         self.assertIn('Class List', body.text)
+
+    def test_class_create_url_exit(self):
+        self.browser.get(self.live_server_url+'/class/new')
+        body = self.browser.find_element_by_tag_name("body")
+        self.assertIn("Create Class", body.text)
+
+    def test_create_form_present(self):
+        self.browser.get(self.live_server_url+'/class/new')
+        body = self.browser.find_element_by_tag_name("body")
+        self.assertIn("Level", body.text)
