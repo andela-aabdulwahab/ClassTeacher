@@ -39,3 +39,4 @@ class TestClassList(StaticLiveServerTestCase):
         self.browser.get(self.live_server_url+'/class/new')
         body = self.browser.find_element_by_tag_name("body")
         self.assertIn("Level", body.text)
+    

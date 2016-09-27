@@ -1,0 +1,12 @@
+{% extends "teacher_app/base.html" %}
+
+{% block title %} Create Class {% endblock %}
+
+{% block content %}
+    <p>Create Class</p>
+    <form method="post" action="" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Create Class" />
+    </form>
+{% endblock %}
