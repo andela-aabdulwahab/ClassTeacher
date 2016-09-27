@@ -63,3 +63,8 @@ class TestClassList(StaticLiveServerTestCase):
         body = self.browser.find_element_by_tag_name("body")
         self.assertIn("Detail View", body.text)
         self.assertIn("Students", body.text)
+
+    def test_add_student_url_exist(self):
+        self.browser.get(self.live_server_url+'/students/new/')
+        body = self.browser.find_element_by_tag_name("body")
+        self.assertIn("Add New Student", body.text)
