@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
+from selenium.webdriver.support.ui import Select
 from django.contrib.auth.models import User
 import time
 
@@ -68,3 +69,28 @@ class TestClassList(StaticLiveServerTestCase):
         self.browser.get(self.live_server_url+'/students/new/')
         body = self.browser.find_element_by_tag_name("body")
         self.assertIn("Add New Student", body.text)
+
+    def test_add_student(self):
+        self.browser.get(self.live_server_url+'/class/new')
+        name = self.browser.find_element_by_name("name")
+        name.send_keys('Gold')
+        submit = self.browser.find_element_by_name("submit")
+        submit.click()
+
+        self.browser.get(self.live_server_url+'/students/new/')
+        first_name = self.browser.find_element_by_name("first_name")
+        first_name.send_keys("John")
+
+        last_name = self.browser.find_element_by_name("last_name")
+        last_name.send_keys("Deo")
+
+        age = self.browser.find_element_by_name("age")
+        age.send_keys(13)
+
+        Select(self.browser.find_element_by_name("class_name")).select_by_visible_text("Gold")
+
+        submit = self.browser.find_element_by_name("submit")
+        submit.click()
+
+        body = self.browser.find_element_by_tag_name('body')
+        self.assertIn('Class List', body.text)
