@@ -11,7 +11,7 @@
     <p>Level: {{ single_class.level }}</p>
     <p>Students</p>
     <ul>
-        {% for student in single_class.students %}
+        {% for student in single_class.students.all %}
             <li>{{ student.first_name}} {{ student.last_name }} {{ student.age }}</li>
         {% endfor %}
     </ul>

@@ -3,7 +3,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from teacher_app.models import TeacherClass
-from teacher_app.forms import CreateClassForm
+from teacher_app.forms import CreateClassForm, StudentCreateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
@@ -29,3 +29,9 @@ class ClassDetailView(LoginRequiredMixin, DetailView):
     template_name = 'teacher_app/class_detail.html'
     model = TeacherClass
     context_object_name = 'single_class'
+
+
+class StudentCreateView(LoginRequiredMixin, CreateView):
+    template_name = 'teacher_app/student_create.html'
+    form_class = StudentCreateForm
+    success_url = '/class/'
