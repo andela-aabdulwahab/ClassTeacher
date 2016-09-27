@@ -19,6 +19,6 @@ class TestClassList(StaticLiveServerTestCase):
         self.browser.quit()
 
     def test_class_list_url_exit(self):
-        self.browser.get(self.live_server_url+'/class')
+        self.browser.get(self.live_server_url+'/class/')
         body = self.browser.find_element_by_tag_name("body")
         self.assertIn('Class List', body.text)
